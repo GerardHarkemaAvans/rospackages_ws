@@ -21,6 +21,8 @@ PACKAGE_DIRECTORY=src
 mkdir $DOWNLOAD_DIRECTORY
 mkdir $PACKAGE_DIRECTORY
 
+#git clone https://github.com/UniversalRobots/Universal_Robots_ROS_Driver.git $PACKAGE_DIRECTORY/universal_robot
+
 
 #flexbe app
 echo "Installing Flexbe"
@@ -325,18 +327,18 @@ if [ ! -d  "$DIRECTORY" ]; then
 fi
 
 
-echo "Installing PR2"
-PR2_FILE=$DOWNLOAD_DIRECTORY/pr2/melodic-devel.zip
-PR2_PACKAGES="pr2_description"
-if [ ! -f "$PR2_FILE" ]; then
-    wget https://github.com/PR2/pr2_common/archive/melodic-devel.zip -P $DOWNLOAD_DIRECTORY/pr2
-fi
-for val in $PR2_PACKAGES; do
-	DIRECTORY=$PACKAGE_DIRECTORY/pr2_common-melodic-devel/$val
-	if [ ! -d  "$DIRECTORY" ]; then
-		unzip $PR2_FILE pr2_common-melodic-devel/$val/* -d $PACKAGE_DIRECTORY
-	fi
-done
+#echo "Installing PR2"
+#PR2_FILE=$DOWNLOAD_DIRECTORY/pr2/melodic-devel.zip
+#PR2_PACKAGES="pr2_description"
+#if [ ! -f "$PR2_FILE" ]; then
+#    wget https://github.com/PR2/pr2_common/archive/melodic-devel.zip -P $DOWNLOAD_DIRECTORY/pr2
+#fi
+#for val in $PR2_PACKAGES; do
+#	DIRECTORY=$PACKAGE_DIRECTORY/pr2_common-melodic-devel/$val
+#	if [ ! -d  "$DIRECTORY" ]; then
+#		unzip $PR2_FILE pr2_common-melodic-devel/$val/* -d $PACKAGE_DIRECTORY
+#	fi
+#done
 
 
 echo "Installing robot pose efk"
