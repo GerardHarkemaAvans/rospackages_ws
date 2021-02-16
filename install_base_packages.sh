@@ -31,23 +31,6 @@ if [ ! -d  "$DIRECTORY" ]; then
 	git clone https://github.com/FlexBE/flexbe_app.git $PACKAGE_DIRECTORY/flexbe_app
 fi
 
-#mkdir Downloads
-
-
-# Universal Robots
-echo "Installing Universal Robot"
-UNIVERSAL_ROBOT_FILE=$DOWNLOAD_DIRECTORY/universal_robots/melodic-devel.zip
-UNIVERSAL_ROBOT_PACKAGES="ur_bringup ur_description ur_gazebo"
-if [ ! -f "$UNIVERSAL_ROBOT_FILE" ]; then
-    wget https://github.com/ros-industrial/universal_robot/archive/melodic-devel.zip -P $DOWNLOAD_DIRECTORY/universal_robots
-
-fi
-for val in $UNIVERSAL_ROBOT_PACKAGES; do
-	DIRECTORY=$PACKAGE_DIRECTORY/universal_robot-melodic-devel/$val
-	if [ ! -d  "$DIRECTORY" ]; then
-		unzip $DOWNLOAD_DIRECTORY/universal_robots/melodic-devel.zip universal_robot-melodic-devel/$val/* -d $PACKAGE_DIRECTORY
-	fi
-done
 
 # ecl core
 echo "Installing ecl Core"
@@ -449,7 +432,17 @@ cd src
 
 catkin b
  
-echo "Do not forget to add $HOME/rospackages_ws/devel/setup.bash to $HOME/.bashrc"
+source_text_find="rospackages_ws/devel/setup.bash"
+source_text="source ./rospackages_ws/devel/setup.bash"
+bashrc_file=$HOME/.bashrc
+echo $source_text
+echo $bashrc_file
+if grep -q $source_text_find $bashrc_file;then
+   echo "./rospackages_ws/devel/setup.bash already exists, not added to $HOME/.bashrc"
+else
+   sudo echo $source_text >> $bashrc_file
+   echo "./rospackages_ws/devel/setup.bash added to $HOME/.bashrc"
+fi
 
 echo "Done installing"
 
