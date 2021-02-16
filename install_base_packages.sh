@@ -428,7 +428,8 @@ done
 
 #rm -r DOWNLOAD_DIRECTORY
 
-#cd src
+cd $HOME/rospackages_ws/
+
 
 catkin b
  

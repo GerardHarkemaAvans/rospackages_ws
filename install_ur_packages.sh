@@ -26,8 +26,7 @@ fi
 
 cd $HOME/rospackages_ws/
 
-#catkin b
-
+catkin b
 
 source_text_find="rospackages_ws/devel/setup.bash"
 source_text="source ./rospackages_ws/devel/setup.bash"
