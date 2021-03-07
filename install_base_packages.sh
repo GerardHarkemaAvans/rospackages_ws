@@ -5,6 +5,7 @@ sudo apt install 	python-catkin-tools \
 		ros-melodic-moveit \
 		joint-state-publisher \
 		ros-melodic-joint-state-publisher-gui \
+		ros-melodic-rqt-joint-trajectory-controller\
 		ros-melodic-ros-control \
 		ros-melodic-ros-controllers \
 		gazebo9-plugin-base \
