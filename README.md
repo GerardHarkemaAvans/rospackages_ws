@@ -1,7 +1,7 @@
 # rospackages_ws
 Installatie stappen:
 1. Plaats deze bestanden in de root van de map "rospackages_ws"
-1a. Gebruik git
+2. Gebruik git
     "cd $HOME"
     "git clone https://github.com/GerardHarkemaAvans/rospackages_ws.git"
     "cd rospackages_ws"
