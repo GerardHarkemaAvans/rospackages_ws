@@ -7,21 +7,18 @@ PACKAGE_DIRECTORY=src
 mkdir $DOWNLOAD_DIRECTORY
 mkdir $PACKAGE_DIRECTORY
 
-#git clone https://github.com/UniversalRobots/Universal_Robots_ROS_Driver.git $PACKAGE_DIRECTORY/universal_robot
 
 # Universal Robots
 echo "Installing Universal Robot"
-UNIVERSAL_ROBOT_FILE=$DOWNLOAD_DIRECTORY/universal_robots/melodic-devel.zip
-UNIVERSAL_ROBOT_PACKAGES="ur_bringup ur_description ur_gazebo"
-if [ ! -f "$UNIVERSAL_ROBOT_FILE" ]; then
-    wget https://github.com/ros-industrial/universal_robot/archive/melodic-devel.zip -P $DOWNLOAD_DIRECTORY/universal_robots
 
-fi
 
-DIRECTORY=$PACKAGE_DIRECTORY/universal_robot-melodic-devel
-if [ ! -d  "$DIRECTORY" ]; then
-	unzip $DOWNLOAD_DIRECTORY/universal_robots/melodic-devel.zip -d $PACKAGE_DIRECTORY/universal_robot-melodic-devel 
-fi
+# retrieve the sources (replace '$ROS_DISTRO' with the ROS version you are using)
+git clone -b $ROS_DISTRO-devel https://github.com/ros-industrial/universal_robot.git src/universal_robot
+
+
+# checking dependencies (again: replace '$ROS_DISTRO' with the ROS version you are using)
+rosdep update
+rosdep install --rosdistro $ROS_DISTRO --ignore-src --from-paths src
 
 
 cd $HOME/rospackages_ws/
