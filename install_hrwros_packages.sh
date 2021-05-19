@@ -405,6 +405,8 @@ done
 
 cd $HOME/rospackages_ws/
 
+# Repair turtle_bot
+cp hexagons.urdf.xacro src/turtlebot-melodic/turtlebot_description/urdf/stacks
 
 catkin b
  
